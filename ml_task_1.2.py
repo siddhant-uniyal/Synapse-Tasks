@@ -24,16 +24,20 @@ running_sum = 0
 
 starting_distance = abs(sorted_list[0] - x) 
 
+last_elem = 0
+
 for index,value in enumerate(sorted_list):
     running_sum+=value
     current_distance = abs(running_sum - x)
     if(current_distance==min(starting_distance,current_distance) and not current_distance==starting_distance):
-        break
+        last_elem = running_sum
 
 
-req_list.append(running_sum)
-req_list.append(total-running_sum)
+req_list.append(last_elem)
+req_list.append(total-last_elem)
 print(req_list)
+
+
 
 
 
