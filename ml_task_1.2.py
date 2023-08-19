@@ -24,17 +24,17 @@ running_sum = 0
 
 starting_distance = abs(sorted_list[0] - x) 
 
-last_elem = 0
+last_elem_of_req_list = 0
 
 for index,value in enumerate(sorted_list):
     running_sum+=value
     current_distance = abs(running_sum - x)
-    if(current_distance<starting_distance):
-        last_elem = running_sum
+    if(current_distance<=starting_distance):
+        last_elem_of_req_list = running_sum
 
 
-req_list.append(last_elem)
-req_list.append(total-last_elem)
+req_list.append(last_elem_of_req_list)
+req_list.append(total-last_elem_of_req_list)
 print(req_list)
 
 
