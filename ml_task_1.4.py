@@ -66,7 +66,7 @@ data = [["Courage the Cowardly Dog",23,1000.39,1000,False,players[0].score],
 ["Princess Peach",23,945.65,50,True,players[1].score],
 ["Walter White",50,1650.73,750,False,players[2].score],
 ["Rory Gilmore",16,1700.87,500,False,players[3].score],
-["Anthony Fantao",37,1400.45,400,True,players[4].score],
+["Anthony Fantano",37,1400.45,400,True,players[4].score],
 ["Beth Harmon",20,2500.34,150,False,players[5].score]
 ]
 
