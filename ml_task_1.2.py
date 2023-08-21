@@ -1,42 +1,33 @@
-''' final output is [x , 48-x] where x is the sum of any number of elements 
-for req min diff maximise x --> since it is (48-2*x)
-ideal situation is [24,24]
-any x which is at the least distance from 24 is the req result
-start a loop on the reverse sorted list , reverse sorting for least steps.
-store running sum
-compare current distance of the running sum from 24 and the distance of the first(greatest) elem from 24 on each itern
-once min distance obtained , break and append into req_list 
-'''
+from itertools import combinations
 
 given_list = ['0001','0011','0101','1011','1101','1111']
 
 convert = lambda x : int(x,2)
 
-sorted_list =  sorted(list(map(convert,given_list)),reverse = True)
+converted_list =  list(map(convert,given_list))
 
-req_list = []
+total = sum(converted_list)
 
-total = sum(sorted_list)
+half_sum = int(total/2)
 
-x = int(total/2)
+def subset_sums(nums):
+    result = []
+    for r in range(len(nums) + 1):
+        for subset in combinations(nums, r):
+            result.append(sum(subset))
+    return result
 
-running_sum = 0
+check = 10000
 
-starting_distance = abs(sorted_list[0] - x) 
+last_elem = 0
 
-last_elem_of_req_list = 0
+sums = subset_sums(converted_list)
 
-for index,value in enumerate(sorted_list):
-    running_sum+=value
-    current_distance = abs(running_sum - x)
-    if(current_distance<=starting_distance):
-        last_elem_of_req_list = running_sum
+for count,value in enumerate(sums):
+    if(abs(value-half_sum)<check):
+        check = abs(value-half_sum)
+        last_elem = value
 
+req_list = [last_elem,total-last_elem]
 
-req_list.append(last_elem_of_req_list)
-req_list.append(total-last_elem_of_req_list)
-print(req_list)
-
-
-
-
+print(req_list) 
