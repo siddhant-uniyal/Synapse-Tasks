@@ -8,18 +8,17 @@ convert = lambda x : int(x,2)
 converted_list = list(map(convert,given_list))
 
 total = sum(converted_list)
-
-half_sum = int(total/2) #ideal solution for a list of sum n , is [n/2,n/2] OR [n+1/2,n-1/2]. We use half_sum as a filter for the best solution
-                       
+#we need to partition the list in two subsets , such that their sum is the least
+#no other way to do this but to brute force , generate every possible subset and check each one                        
 def best_sum(nums):
     check = sys.maxsize
-    for r in range(1 , len(nums) + 1): #chooses length of subset , starting from 1 till length of list
+    for r in range(1 , len(nums)): #chooses length of subset , starting from 1 till length of list - 1. if we consider the entire list a subset , in case of lists with negative values and zero/negative sums it gives wrong output
         for subset in combinations(nums, r): #creates the subset
             result = sum(subset)
-            difference = abs(result-half_sum) #checking how far off the sum of the current subset is from (total of list)/2
+            difference = abs(total - 2*result) #if one elem is result , other elem is total-result.so diff = total-2*result
             if(difference<check): #true for first step
                 check = difference  #every iteration starting from the second will be checked against the previous one
-                best = result # the best sum is the one closest to total/2
+                best = result #this sum is better than the previous one. so store it
     return best 
 
 last_elem = best_sum(converted_list)
@@ -27,4 +26,5 @@ last_elem = best_sum(converted_list)
 req_list = [last_elem , total - last_elem]
 
 print(req_list)
+
 
