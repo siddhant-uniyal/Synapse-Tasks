@@ -8,7 +8,7 @@ convert = lambda x : int(x,2)
 converted_list = list(map(convert,given_list))
 
 total = sum(converted_list)
-#we need to partition the list in two subsets , such that their sum is the least
+#we need to partition the list in two subsets , such that their difference is the least
 #no other way to do this but to brute force , generate every possible subset and check each one                        
 def best_sum(nums):
     check = sys.maxsize
