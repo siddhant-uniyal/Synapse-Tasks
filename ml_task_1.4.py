@@ -70,6 +70,6 @@ data = [["Courage the Cowardly Dog",23,1000.39,1000,False,players[0].score],
 ["Beth Harmon",20,2500.34,150,False,players[5].score]
 ]
 
-data.sort(key=lambda row:row[-1] , reverse=True)
-print(tabulate(data,headers=headers))
-print()
+data.sort(key=lambda row:row[-1] , reverse=True) #we use the last element of each entry in data as the key for sorting. we sort in a reverse fashion for direct display of winners
+print(tabulate(data,headers=headers)) #used tabulate for tables
+
